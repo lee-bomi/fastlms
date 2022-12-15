@@ -19,11 +19,17 @@ public class MemberController {
 
     private final MemberServiceImpl memberService;
 
-    @RequestMapping(value = "/member/register", method = RequestMethod.GET)
+    @RequestMapping("/member/login")
+    public String login() {
+        return "member/login";
+    }
+
+    @GetMapping("/member/register")
     public String register() {
         return "member/register";
     }
-    @RequestMapping(value = "/member/register", method = RequestMethod.POST)
+
+    @PostMapping("/member/register")
     public String registerSubmit(Model model, HttpServletRequest request, MemberInput parameter) {
 
         boolean result = memberService.register(parameter);

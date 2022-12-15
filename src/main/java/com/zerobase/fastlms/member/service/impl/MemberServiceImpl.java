@@ -2,6 +2,7 @@ package com.zerobase.fastlms.member.service.impl;
 
 import com.zerobase.fastlms.component.MailComponent;
 import com.zerobase.fastlms.member.entity.Member;
+import com.zerobase.fastlms.member.exception.MemberNotEmailAuthException;
 import com.zerobase.fastlms.member.model.MemberInput;
 import com.zerobase.fastlms.member.repository.MemberRepository;
 import com.zerobase.fastlms.member.service.MemberService;
@@ -82,6 +83,10 @@ public class MemberServiceImpl implements MemberService {
         }
 
         Member member = optionalMember.get();
+
+        if (!member.isEmailAuthYn()) {
+            throw new MemberNotEmailAuthException("이메일을 활성화 이후에 로그인해주세요");
+        }
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
         grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_USER"));
 

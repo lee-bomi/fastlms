@@ -17,10 +17,9 @@ public class MainController {
     public String index() {
         System.out.println("==============================");
         String email = "bomvll@naver.com";
-        String subject = "이리오너라";
-        String text = "<p>안녕하세요 오구애오</p>";
-        mailComponent.sendMail(email, subject, text);
+        String subject = "메일왔어용";
+        String text = "<p>안녕하세요 접니다</p>";
+//        mailComponent.sendMail(email, subject, text);
         return "/index";
     }
-
 }

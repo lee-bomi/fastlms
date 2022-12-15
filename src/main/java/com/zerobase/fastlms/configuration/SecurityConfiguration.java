@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -41,6 +42,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .loginPage("/member/login")
                 .failureHandler(getFailureHandler())
                 .permitAll();
+
+        http.logout()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/member/logout"))
+                .logoutSuccessUrl("/")
+                .invalidateHttpSession(true);
 
         http.csrf().disable();  //post요청이 가능하도록 추가 설정함
         super.configure(http);

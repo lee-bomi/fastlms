@@ -41,7 +41,7 @@ public class MemberServiceImpl implements MemberService {
         Member member = Member.builder()
                 .userId(parameter.getUserId())
                 .userName(parameter.getUserName())
-                .phone(parameter.getUserName())
+                .phone(parameter.getPhone())
                 .password(encPassword)
                 .regDt(LocalDateTime.now())
                 .emailAuthYn(false)
@@ -175,5 +175,11 @@ public class MemberServiceImpl implements MemberService {
         }
 
         return true;
+    }
+
+    @Override
+    public List<Member> list() {
+        List<Member> members = memberRepository.findAll();
+        return members;
     }
 }

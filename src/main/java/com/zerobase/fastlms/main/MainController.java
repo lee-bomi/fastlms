@@ -16,10 +16,14 @@ public class MainController {
     @GetMapping("/")
     public String index() {
         System.out.println("==============================");
-        String email = "bomvll@naver.com";
-        String subject = "메일왔어용";
-        String text = "<p>안녕하세요 접니다</p>";
 //        mailComponent.sendMail(email, subject, text);
         return "/index";
+    }
+
+    @GetMapping("/error/denied")
+    public String errorDenied() {
+
+//        mailComponent.sendMail(email, subject, text);
+        return "/error/denied";
     }
 }

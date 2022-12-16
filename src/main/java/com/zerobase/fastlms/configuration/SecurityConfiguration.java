@@ -40,6 +40,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 )
                 .permitAll();
 
+        http.authorizeRequests()
+                .antMatchers("/admin/**")
+                .hasAuthority("ROLE_ADMIN");
+
         http.formLogin()
                 .loginPage("/member/login")
                 .failureHandler(getFailureHandler())
@@ -49,6 +53,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .logoutRequestMatcher(new AntPathRequestMatcher("/member/logout"))
                 .logoutSuccessUrl("/")
                 .invalidateHttpSession(true);
+
+        http.exceptionHandling()
+                .accessDeniedPage("/error/denied");
 
         http.csrf().disable();  //post요청이 가능하도록 추가 설정함
         super.configure(http);

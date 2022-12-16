@@ -68,6 +68,12 @@ public class MemberServiceImpl implements MemberService {
             return false;
         }
         Member member = authMember.get();
+
+        //이미 계정 활성화되어있는데 새로고침했을때 계속활성화되었다고 뜨지않게하기위함
+        if (member.isEmailAuthYn()) {
+            return false;
+        }
+
         member.setEmailAuthYn(true);
         member.setEmailAuthDt(LocalDateTime.now());
         memberRepository.save(member);
@@ -115,6 +121,10 @@ public class MemberServiceImpl implements MemberService {
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
         grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_USER"));
 
+        if (member.isAdminYn()) {
+            grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+        }
+
 
         return new User(member.getUserId(), member.getPassword(), grantedAuthorities);
     }
@@ -153,6 +163,7 @@ public class MemberServiceImpl implements MemberService {
             return false;
         }
 
+        //이미 활성화된 계정이 또 활성화 되는것을 막기위함
         Member member = optionalMember.get();
 
         if (member.getResetPasswordLimitDt() == null) {

@@ -1,5 +1,8 @@
 package com.zerobase.fastlms.member.service.impl;
 
+import com.zerobase.fastlms.admin.dto.MemberDto;
+import com.zerobase.fastlms.admin.mapper.MemberMapper;
+import com.zerobase.fastlms.admin.model.MemberParam;
 import com.zerobase.fastlms.component.MailComponent;
 import com.zerobase.fastlms.member.entity.Member;
 import com.zerobase.fastlms.member.exception.MemberNotEmailAuthException;
@@ -15,6 +18,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -28,6 +32,7 @@ public class MemberServiceImpl implements MemberService {
 
     private final MemberRepository memberRepository;
     private final MailComponent mailComponent;
+    private final MemberMapper memberMapper;
     @Override
     public boolean register(MemberInput parameter) {
 
@@ -178,8 +183,18 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public List<Member> list() {
-        List<Member> members = memberRepository.findAll();
-        return members;
+    public List<MemberDto> list(MemberParam param) {
+        long totalCount = memberMapper.selectListCount(param);
+        List<MemberDto> list = memberMapper.selectList(param);
+        if (!CollectionUtils.isEmpty(list)) {
+            int i = 0;
+            for (MemberDto x : list) {
+                x.setTotalCount(totalCount);
+                x.setSeq(totalCount - param.getPageStart() - i);
+                i++;
+            }
+        }
+        return list;
+//        List<Member> members = memberRepository.findAll();
     }
 }

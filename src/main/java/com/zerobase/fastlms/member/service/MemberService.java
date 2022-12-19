@@ -1,5 +1,7 @@
 package com.zerobase.fastlms.member.service;
 
+import com.zerobase.fastlms.admin.dto.MemberDto;
+import com.zerobase.fastlms.admin.model.MemberParam;
 import com.zerobase.fastlms.member.entity.Member;
 import com.zerobase.fastlms.member.model.MemberInput;
 import com.zerobase.fastlms.member.model.ResetPasswordInput;
@@ -38,5 +40,5 @@ public interface MemberService extends UserDetailsService {
     /**
      * admin에서 list에 넣을 회원정보를 가져온다
      */
-    public List<Member> list();
+    public List<MemberDto> list(MemberParam memberParam);
 }

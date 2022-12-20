@@ -41,4 +41,11 @@ public interface MemberService extends UserDetailsService {
      * admin에서 list에 넣을 회원정보를 가져온다
      */
     public List<MemberDto> list(MemberParam memberParam);
+
+    /**
+     * 회원 상세 정보
+     * @param userId
+     * @return
+     */
+    MemberDto detail(String userId);
 }

@@ -10,6 +10,7 @@ public class MemberParam {
 
     String searchType;
     String searchValue;
+    String userId;
 
     /*
     limit 0, 10 --> pageIndex : 1
@@ -17,6 +18,8 @@ public class MemberParam {
     limit 20, 10 --> pageIndex : 3
     limit 30, 10 --> pageIndex : 4
      */
+
+
     public long getPageStart() {
         init();
         return (pageIndex - 1) * pageSize;

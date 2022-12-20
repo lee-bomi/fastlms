@@ -25,6 +25,14 @@ spring:
     level:
       root: debug
 
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
+  thymeleaf:
+    cache: false
+
 mybatis:
   mapper-locations: mybatis/**/*.xml
   configuration:

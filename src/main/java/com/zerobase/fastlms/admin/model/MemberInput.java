@@ -3,8 +3,9 @@ package com.zerobase.fastlms.admin.model;
 import lombok.Data;
 
 @Data
-public class MemberStatusInput {
+public class MemberInput {
 
     String userId;
     String userStatus;
+    String password;
 }

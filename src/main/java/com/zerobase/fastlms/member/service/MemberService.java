@@ -56,4 +56,12 @@ public interface MemberService extends UserDetailsService {
      * @return
      */
     boolean updateStatus(String userId, String userStatus);
+
+    /**
+     * 회원 비밀번호 초기화(성격급한분들을 위한 기능)
+     * @param userId
+     * @param password
+     * @return
+     */
+    boolean updatePassword(String userId, String password);
 }

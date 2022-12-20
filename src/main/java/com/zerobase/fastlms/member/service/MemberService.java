@@ -48,4 +48,12 @@ public interface MemberService extends UserDetailsService {
      * @return
      */
     MemberDto detail(String userId);
+
+    /**
+     * 회원 상태를 업데이트
+     * @param userId
+     * @param userStatus
+     * @return
+     */
+    boolean updateStatus(String userId, String userStatus);
 }

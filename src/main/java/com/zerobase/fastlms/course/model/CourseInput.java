@@ -20,5 +20,5 @@ public class CourseInput {
     long price;
     long salePrice;
     String saleEndDt;
-
+    String idList;  //삭제할 데이터 id값들
 }

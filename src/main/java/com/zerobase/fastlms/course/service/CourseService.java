@@ -35,4 +35,10 @@ public interface CourseService {
      * @return
      */
     boolean set(CourseInput parameter);
+
+    /**
+     * 강좌내용 삭제
+     * @param idList
+     */
+    boolean del(String idList);
 }

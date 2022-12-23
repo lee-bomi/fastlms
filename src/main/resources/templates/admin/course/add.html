@@ -48,14 +48,15 @@
             <tr>
                 <th>강좌명</th>
                 <td>
-                    <input type="text" name="subject" required placeholder="강좌명 입력">
+                    <input type="text" name="subject" required placeholder="강좌명 입력" th:value="${detail.getSubject()}">
                 </td>
             </tr>
             </thead>
             <tbody></tbody>
         </table>
         <div class="buttons">
-            <button type="submit"> 강좌등록</button>
+            <button type="submit" th:if="${editMode}"> 강좌수정</button>
+            <button type="submit" th:if="${!editMode}"> 강좌등록</button>
             <a href="/admin/course/list.do">목록 이동</a>
         </div>
     </form>

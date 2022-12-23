@@ -24,4 +24,15 @@ public interface CourseService {
      */
     List<CourseDto> list(CourseParam param);
 
+    /**
+     * 강좌 상세정보
+     */
+    CourseDto getById(long id);
+
+    /**
+     * 강좌정보 수정
+     * @param parameter
+     * @return
+     */
+    boolean set(CourseInput parameter);
 }

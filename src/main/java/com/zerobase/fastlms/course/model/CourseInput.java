@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 //@NoArgsConstructor
 //@Builder
 public class CourseInput {
-
+    long id;
     String subject;
 }

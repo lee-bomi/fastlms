@@ -51,7 +51,9 @@
         <tr th:each="x : ${list}">
             <td th:text="${x.seq}">1</td>
             <td >
-                <p th:text="${x.subject}"></p>
+                <p>
+                    <a th:href="'/admin/course/edit.do?id=' + ${x.id}" th:text="${x.subject}"></a>
+                </p>
             </td>
             <td th:text="${x.regDt}">2022.12.16</td>
         </tr>

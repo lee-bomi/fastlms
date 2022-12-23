@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>강좌 화면</title>
+    <style>
+        .detail table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .detail table th, .detail table td {
+            border: solid 1px #000;
+        }
+        .search-form {
+            position: relative;
+            padding: 5px 0 10px 0;
+            text-align: right;
+        }
+        .search-form .total-count {
+            position: absolute;
+            left: 0; top: 0;
+            height: 20px;
+            float: left;
+        }
+        .pager {
+            margin-top: 10px;
+            text-align: center;
+        }
+        .pager a.on{
+            font-weight: bold;
+            color : red;
+        }
+        .buttons {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
+</head>
+<body>
+<p>강좌 관리 - 강좌 등록</p>
+<!--<div th:replace="/fragments/layout.html :: fragment-admin-body-menu"></div>-->
+
+<div class="detail">
+    <form method="post">
+        <table>
+            <thead>
+            <tr>
+                <th>강좌명</th>
+                <td>
+                    <input type="text" name="subject" required placeholder="강좌명 입력">
+                </td>
+            </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <div class="buttons">
+            <button type="submit"> 강좌등록</button>
+            <a href="/admin/course/list.do">목록 이동</a>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

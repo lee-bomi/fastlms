@@ -2,7 +2,8 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zerobase.fastlms.admin.mapper.MemberMapper">
+<mapper namespace="com.zerobase.fastlms.course.mapper.CourseMapper">
+
     <sql id="selectListWhere">
         <if test="searchType != null and searchValue != null">
             <choose>
@@ -28,12 +29,15 @@
 
     <select id="selectListCount"
             resultType="long">
-        select count(*) from member where 1=1
+
+        select count(*) from course where 1=1
         <include refid="selectListWhere"/>
     </select>
+
     <select id="selectList"
-            resultType="com.zerobase.fastlms.admin.dto.MemberDto">
-        select * from member where 1=1
+            resultType="com.zerobase.fastlms.course.dto.CourseDto">
+
+        select * from course where 1=1
         <include refid="selectListWhere"/>
         limit #{pageStart}, #{pageEnd}
     </select>

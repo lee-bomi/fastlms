@@ -46,11 +46,55 @@
         <table>
             <thead>
             <tr>
-                <th>강좌명</th>
+                <th>강좌 카테고리</th>
                 <td>
-                    <input type="text" name="subject" required placeholder="강좌명 입력" th:value="${detail.getSubject()}">
+                    <select name="categoryId" required>
+                        <option value="">카테고리 선택</option>
+                        <option
+                                th:selected="${detail.categoryId == x.id}"
+                                th:each="x : ${category}" th:value="${x.id}" th:text="${x.categoryName}">기획</option>
+                    </select>
                 </td>
             </tr>
+            <tr>
+                <th>강좌명</th>
+                <td>
+                    <input type="text" name="subject" required placeholder="강좌명 입력" th:value="${detail.getSubject()}"/>
+                </td>
+            </tr>
+            <tr>
+                <th>키워드</th>
+                <td>
+                    <input type="text" name="keyword" required placeholder="키워드 입력" th:value="${detail.getKeyword()}"/>
+                </td>
+            </tr>
+            <tr>
+                <th>요약문구</th>
+                <td>
+                    <label>
+                        <textarea name="summary" required placeholder="summary" th:text="${detail.getSummary()}" ></textarea>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <th>내용</th>
+                <td>
+                    <input type="text" name="contents" required placeholder="내용 입력" th:value="${detail.getContents()}"/>
+                </td>
+            </tr>
+            <tr>
+                <th>판매가</th>
+                <td>
+                    <input type="text" name="price" required placeholder="판매가 입력" th:value="${detail.getPrice()}"/>
+                </td>
+            </tr>
+            <tr>
+                <th>할인 종료일</th>
+                <td>
+                    <input type="text" name="saleEndDt" placeholder="할인 종료일 입력" th:value="${detail.getSaleEndDt()}"/>
+                </td>
+            </tr>
+
             </thead>
             <tbody></tbody>
         </table>

@@ -10,6 +10,8 @@ import javax.persistence.Column;
 import javax.persistence.Lob;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Builder
 @Data
@@ -33,7 +35,6 @@ public class CourseDto {
     long seq;
 
     public static CourseDto of(Course course) {
-
        return CourseDto.builder()
                 .id(course.getId())
                .categoryId(course.getCategoryId())
@@ -48,5 +49,16 @@ public class CourseDto {
                 .regDt(course.getRegDt())
                 .udtDt(course.getUdtDt())
                 .build();
+    }
+
+    public static List<CourseDto> of(List<Course> courses) {
+        if (courses != null) {
+            List<CourseDto> courseList = new ArrayList<>();
+            for (Course x : courses) {
+                courseList.add(CourseDto.of(x));
+            }
+            return courseList;
+        }
+        return null;
     }
 }

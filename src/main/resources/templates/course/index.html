@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>강좌 정보 페이지</title>
+    <style>
+        span.price {
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+<h1>강좌 정보 페이지</h1>
+<!--    <div th:replace="/fragments/layout.html :: fragment-body-menu"></div>-->
+<div>
+    <a href="?">전체
+    <span th:text="${courseToTalCount}"></span></a>
+    <th:block th:each="y : ${categoryList}">
+        |
+        <a th:href="'/course?categoryId=' + ${y.id}">
+            <span th:text="${y.categoryName}">카테고리명</span>(<span th:text="${y.courseCount}">0</span>)
+        </a>
+    </th:block>
+    <hr>
+</div>
+<table>
+
+    <ul>
+        <li th:each="x : ${list}">
+            <div>
+                <a href="'/course/' +  ${x.id}">
+                    <h3 th:text="${x.subject}">강좌명</h3>
+                </a>
+                <div>
+                    <p th:text="${x.summary}"></p>
+                    <p>
+                        판매가: <span class="price" th:text="${x.price}"></span>
+                        할인가: <span class="price" th:text="${x.salePrice}"></span>
+                    </p>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+</table>
+</body>
+</html>

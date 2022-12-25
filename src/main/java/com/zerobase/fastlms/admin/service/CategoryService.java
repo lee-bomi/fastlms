@@ -7,6 +7,11 @@ import java.util.List;
 
 public interface CategoryService {
     /**
+     * 전체리스트 가져오기
+     * @return
+     */
+    List<CategoryDto> list();
+    /**
      * 카테고리 신규 추가
      * @param category
      * @return
@@ -28,7 +33,7 @@ public interface CategoryService {
     boolean del(long id);
 
     /*
-    * 카테고리 리스트 가져오기
+    * 프론트 카테고리 리스트 가져오기
     * */
-    List<CategoryDto> list();
+    List<CategoryDto> frontList(CategoryDto parameter);
 }

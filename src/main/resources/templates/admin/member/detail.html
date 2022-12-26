@@ -85,6 +85,15 @@
                         </div>
                     </td>
                 </tr>
+                <tr>
+                    <th>로그인 기록</th>
+                    <td th:each="x : ${logList}">
+                        ID : <p th:text="${x.loginId}">id</p>
+                        Login 시간 : <p th:text="${x.loginDt}">시간</p>
+                        Ip : <p th:text="${x.accessIp}"></p>
+                        UserAgent : <p th:text="${x.accessUserAgent}"></p>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <div>

@@ -1,6 +1,7 @@
 package com.zerobase.fastlms.member.controller;
 
 
+import com.zerobase.fastlms.log.service.LogService;
 import com.zerobase.fastlms.member.model.MemberInput;
 
 import com.zerobase.fastlms.member.model.ResetPasswordInput;
@@ -20,10 +21,18 @@ public class MemberController {
 
     private final MemberServiceImpl memberService;
 
-    @RequestMapping("/member/login")
-    public String login() {
+
+    @GetMapping("/member/login")
+    public String login(HttpServletRequest request) {
         return "member/login";
     }
+
+//    @PostMapping("/member/login")
+//    public String successLogin(String id, String pw) {
+//        System.out.println("id :" + id);
+//        System.out.println("pw :" + pw);
+//        return "redirect:/";
+//    }
 
     @GetMapping("/member/register")
     public String register() {

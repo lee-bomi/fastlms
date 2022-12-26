@@ -18,6 +18,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 
     private final MemberService memberService;
+    private final LoginSuccessHandler loginSuccessHandler;
     @Bean
     UserAuthenticationFailureHandler getFailureHandler() {
         return new UserAuthenticationFailureHandler();
@@ -46,6 +47,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 
         http.formLogin()
                 .loginPage("/member/login")
+                .successHandler(loginSuccessHandler)
                 .failureHandler(getFailureHandler())
                 .permitAll();
 

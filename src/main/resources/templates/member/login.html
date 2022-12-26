@@ -9,7 +9,7 @@
 <div th:replace="/fragments/layout.html :: fragment-body-menu"></div>
 <div th:text="${errorMessage}"></div>
 
-<form action="" method="post">
+<form action="/member/login" method="post">
   <div>
     <input type="text" name="username" placeholder="아이디(이메일)을 입력" required>
   </div>
